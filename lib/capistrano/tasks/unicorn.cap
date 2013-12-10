@@ -126,7 +126,7 @@ namespace :unicorn do
   desc 'Reload Unicorn'
   task :reload do
     on roles unicorn_roles, :except => {:no_release => true} do
-      execute "if #{unicorn_is_running?}; then #{unicorn_send_signal('HUP')}; else #{start_unicorn}; fi;"
+      execute "if #{unicorn_is_running?}; then #{unicorn_send_signal('HUP')}; else #{start_unicorn} fi;"
       # run <<-END
       #   if #{unicorn_is_running?}; then
       #     echo "Reloading Unicorn...";
