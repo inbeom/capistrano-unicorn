@@ -36,7 +36,7 @@ namespace :load do
     set :unicorn_default_pid           , Proc.new{ File.join(fetch(:app_path), 'tmp', 'pids', 'unicorn.pid') }
     set :unicorn_pid, Proc.new{
       extracted_pid = extract_pid_file
-      if extracted_pid
+      if !extracted_pid.empty?
         extracted_pid
       else
         # TODO logger is not defined
